@@ -2,10 +2,10 @@ Summary:	SynCE - Compressed RTF extensions
 Summary(pl.UTF-8):	SynCE - rozszerzenia do skompresowanego RTF-a
 Name:		synce-librtfcomp
 Version:	1.1
-Release:	0.1
+Release:	1
 License:	LGPL v2.1
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/synce/librtfcomp-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/synce/librtfcomp-%{version}.tar.gz
 # Source0-md5:	b7f70dc41687d920ec9f47c01f56d6ce
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.53
@@ -95,6 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/testrtf
 %attr(755,root,root) %{_bindir}/tortf
 %attr(755,root,root) %{_libdir}/librtfcomp.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/librtfcomp.so.0
 
 %files devel
 %defattr(644,root,root,755)
