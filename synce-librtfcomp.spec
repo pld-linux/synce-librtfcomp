@@ -13,6 +13,8 @@ BuildRequires:	automake >= 1:1.9
 BuildRequires:	libtool
 BuildRequires:	python-Pyrex
 BuildRequires:	python-devel >= 2.2
+BuildRequires:	python-modules
+BuildRequires:	rpm-pythonprov
 BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
