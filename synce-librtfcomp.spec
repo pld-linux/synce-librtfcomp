@@ -1,21 +1,20 @@
 Summary:	SynCE - Compressed RTF extensions
 Summary(pl.UTF-8):	SynCE - rozszerzenia do skompresowanego RTF-a
 Name:		synce-librtfcomp
-Version:	1.1
+Version:	1.3
 Release:	1
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/synce/librtfcomp-%{version}.tar.gz
-# Source0-md5:	b7f70dc41687d920ec9f47c01f56d6ce
+# Source0-md5:	7aa26fc1dd2dd2ef64043fae573c69dc
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.9
 BuildRequires:	libtool
-BuildRequires:	python-Pyrex
+BuildRequires:	python-Pyrex >= 0.9.6
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	python-modules
 BuildRequires:	rpm-pythonprov
-BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -63,8 +62,6 @@ Wiązanie Pythona do biblioteki librtfcomp.
 
 %prep
 %setup -q -n librtfcomp-%{version}
-# XXX - fix the test
-sed -i -e s/have_gccvisibility=yes/have_gccvisibility=no/ configure.in
 
 %build
 %{__libtoolize}
@@ -81,8 +78,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv $RPM_BUILD_ROOT%{_bindir}/test{,rtf}
-rm -f $RPM_BUILD_ROOT%{py_sitedir}/pyrtfcomp.{la,a}
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/pyrtfcomp.{la,a}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -93,9 +89,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc CHANGELOG
-%attr(755,root,root) %{_bindir}/fromrtf
-%attr(755,root,root) %{_bindir}/testrtf
-%attr(755,root,root) %{_bindir}/tortf
 %attr(755,root,root) %{_libdir}/librtfcomp.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/librtfcomp.so.0
 
@@ -111,4 +104,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n python-pyrtfcomp
 %defattr(644,root,root,755)
-%{py_sitedir}/pyrtfcomp.so
+%attr(755,root,root) %{py_sitedir}/pyrtfcomp.so
