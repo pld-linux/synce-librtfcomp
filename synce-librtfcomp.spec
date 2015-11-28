@@ -2,7 +2,7 @@ Summary:	SynCE - Compressed RTF extensions
 Summary(pl.UTF-8):	SynCE - rozszerzenia do skompresowanego RTF-a
 Name:		synce-librtfcomp
 Version:	1.3
-Release:	2
+Release:	3
 License:	LGPL v2.1
 Group:		Libraries
 Source0:	http://downloads.sourceforge.net/synce/librtfcomp-%{version}.tar.gz
